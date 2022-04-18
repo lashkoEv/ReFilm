@@ -1,0 +1,188 @@
+body{
+    background-image: url("../img/pattern13.png");
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.navbar-bg {
+    box-shadow: 10px 10px 10px rgba(227, 227, 227, 0.5);
+    margin-bottom: 70px;
+}
+
+#mainNav {
+    position: absolute;
+    color: #212529;
+    background-color: white;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+#mainNav .navbar-brand {
+    font-weight: 800;
+    color: #343a40;
+}
+
+#mainNav .navbar-toggler {
+    font-size: 12px;
+    font-weight: 800;
+    padding: 13px;
+    text-transform: uppercase;
+    color: #343a40;
+}
+
+#mainNav .navbar-nav > li.nav-item > a {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@media only screen {
+    #mainNav {
+        transition: background-color 0.2s;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    #mainNav .navbar-brand {
+        padding: 10px 20px;
+        color: #212529;
+    }
+    #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+        color: rgb(145, 35, 112);
+    }
+    #mainNav .navbar-nav > li.nav-item > a {
+        padding: 10px 20px;
+        color: #212529;
+    }
+    #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
+        color: rgb(145, 35, 112);
+    }
+}
+
+@media only screen {
+    #mainNav {
+        color: #212529;
+        transition: background-color 0.2s;
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+    }
+    #mainNav.is-fixed {
+        position: fixed;
+        top: -67px;
+        transition: transform 0.2s;
+        border-bottom: 1px solid white;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    #mainNav.is-fixed .navbar-brand {
+        color: rgb(145, 35, 112);
+    }
+    #mainNav.is-fixed .navbar-brand:focus, #mainNav.is-fixed .navbar-brand:hover {
+        color: rgb(145, 35, 112);
+    }
+    #mainNav.is-fixed .navbar-nav > li.nav-item > a {
+        color: #212529;
+    }
+    #mainNav.is-fixed .navbar-nav > li.nav-item > a:focus, #mainNav.is-fixed .navbar-nav > li.nav-item > a:hover {
+        color: rgb(145, 35, 112);
+    }
+    #mainNav.is-visible {
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+header.masthead .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #212529;
+    opacity: 0.7;
+}
+
+
+footer {
+    background-color: rgba(150, 150, 150, 0.1);
+    padding: 30px 0 30px;
+    font-family: Montserrat, sans-serif;
+}
+
+footer .list-inline {
+    margin: 0;
+    padding: 0;
+}
+
+footer .copyright {
+    font-size: 14px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.card-header{
+    background-color: rgba(0, 177, 177, 0.2);
+}
+
+.card-footer{
+    color: rgb(145, 35, 112);
+}
+
+.btn-light{
+    background-color: rgba(174, 174, 174, 0.2) !important;;
+}
+
+.btn-light:hover{
+    background-color: rgba(141, 141, 141, 0.4) !important;;
+}
+
+.custom-select {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.custom-select select {
+    display: none;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+
+.select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+}
+
+.select-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.floating-label-form-group input::-webkit-input-placeholder,
+.floating-label-form-group textarea::-webkit-input-placeholder {
+    color: #868e96;
+    font-family: "Roboto Condensed", sans-serif;
+}

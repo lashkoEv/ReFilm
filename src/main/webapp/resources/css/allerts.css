@@ -1,0 +1,38 @@
+input.ng-dirty.ng-invalid {
+    border: 2px solid #ff0000
+}
+
+input.ng-dirty.ng-valid {
+    border: 2px solid #6bc502
+}
+
+form {
+    border: cadetblue dotted 1px;
+    padding: 15px;
+    border-radius: 0.75rem;
+    padding: 15px;
+    margin: 15px;
+}
+
+.my-div {
+    border: cadetblue dotted 1px;
+    padding: 15px;
+    border-radius: 0.75rem;
+    margin: 15px;
+}
+
+.demo-alert-box {
+    padding: 10px 20px;
+    background: #f3beb8;
+    border: 1px solid #f09898;
+}
+
+.demo-success-box {
+    padding: 10px 20px;
+    background: #b3f338;
+    border: 1px solid #30f02d;
+}
+
+.to-up {
+    cursor: pointer;
+}

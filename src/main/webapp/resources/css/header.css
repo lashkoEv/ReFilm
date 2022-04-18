@@ -1,0 +1,40 @@
+.item-responsive {
+    position: relative;
+    height: 600px !important;
+}
+
+.item-responsive:before {
+    display: block;
+    content: "";
+    width: 100%;
+}
+
+.item-16by9 {
+    padding-top: 56.25%;
+}
+
+.item-responsive > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100% !important;
+    height: 600px !important;
+}
+
+.carousel-caption {
+    top: 20%;
+    height: 100px;
+}
+
+.wrapper {
+    color: white;
+    text-shadow: 2px 2px 4px #8a8a8a;
+    text-align: center;
+    line-height: 160%;
+}
+.wrapper h1 {
+    font-size: 70px;
+    margin-bottom: 20px;
+}
