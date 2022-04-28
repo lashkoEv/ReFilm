@@ -38,12 +38,12 @@
                                     class="form-control" placeholder="Введіть назву матеріалу..."/>
                         <form:errors path="title" cssClass="error"/>
 
-                        <form:select path="category" class="custom-select" style="width:100%">
-                            <c:forEach items="${categories}" var="f" varStatus="state">
-                                <form:option value="${f.id}" label="${f.getCategory()}"/>
+                        <form:select path="film" class="custom-select" style="width:100%">
+                            <c:forEach items="${films}" var="f" varStatus="state">
+                                <form:option value="${f.id}" label="${f.name}"/>
                             </c:forEach>
                         </form:select>
-                        <form:errors path="category" cssClass="error"/>
+                        <form:errors path="film" cssClass="error"/>
 
                         <br/>
 

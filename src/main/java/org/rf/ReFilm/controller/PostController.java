@@ -3,7 +3,7 @@ package org.rf.ReFilm.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.rf.ReFilm.model.Post;
 import org.rf.ReFilm.model.User;
-import org.rf.ReFilm.service.CategoryService;
+import org.rf.ReFilm.service.FilmService;
 import org.rf.ReFilm.service.PostService;
 import org.rf.ReFilm.service.UserService;
 import org.springframework.security.core.Authentication;
@@ -28,12 +28,12 @@ public class PostController {
 
     private final PostService postService;
 
-    private final CategoryService categoryService;
+    private final FilmService filmService;
 
-    public PostController(UserService userService, PostService postService, CategoryService categoryService) {
+    public PostController(UserService userService, PostService postService, FilmService filmService) {
         this.userService = userService;
         this.postService = postService;
-        this.categoryService = categoryService;
+        this.filmService = filmService;
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
@@ -65,7 +65,7 @@ public class PostController {
     @RequestMapping(path = "/create", method = RequestMethod.GET)
     public String create(Model model) {
         log.info(" --- create post (get)");
-        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("films", filmService.findAll());
         return "add-post";
     }
 
@@ -88,14 +88,13 @@ public class PostController {
             model.addAttribute("post", post);
             return "add-post";
         }
-        redirectAttributes.addFlashAttribute("msg", "Новий навчальний матеріал успушно додано!");
+        redirectAttributes.addFlashAttribute("msg", "Нову рецензію успушно додано!");
         redirectAttributes.addFlashAttribute("posts", postService.findAllByOrderByIdDesc());
         return "redirect:/";
     }
 
 
     @RolesAllowed({"ROLE_EXPERT", "ROLE_ADMIN"})
-//   @PreAuthorize(value = "hasRole('ROLE_PSYCHOLOGIST') and #username == authentication.principal.username")
     @RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
         log.info(" --- delete post (post)");
@@ -108,10 +107,10 @@ public class PostController {
             if (user.equals(author) || u.getAuthorities().toString().contains("ROLE_ADMIN")) {
                 postService.delete(id);
                 log.info(" --- deleted post id {}", id);
-                redirectAttributes.addFlashAttribute("msg", "Навчальний матеріал видалено успішно!");
+                redirectAttributes.addFlashAttribute("msg", "Рецензію видалено успішно!");
             }
         } catch (AuthenticationException e) {
-            log.error(" --- Error ", e.getLocalizedMessage());
+            log.error(" --- Error " + e.getLocalizedMessage());
         }
         model.addAttribute("posts", postService.findAll());
         return "redirect:/";
@@ -131,12 +130,12 @@ public class PostController {
                 Post found = postService.findById(id);
                 if (found != null) {
                     model.addAttribute("post", found);
-                    model.addAttribute("categories", categoryService.findAll());
+                    model.addAttribute("films", filmService.findAll());
                     return "add-post";
                 }
             }
         } catch (AuthenticationException e) {
-            log.error(" --- Error ", e.getLocalizedMessage());
+            log.error(" --- Error " + e.getLocalizedMessage());
         }
         return "redirect:/";
     }
@@ -168,9 +167,8 @@ public class PostController {
             model.addAttribute("post", post);
             return "add-post";
         }
-        redirectAttributes.addFlashAttribute("msg", "Навчальний матеріал відредаговано успішно!");
+        redirectAttributes.addFlashAttribute("msg", "Рецензію відредаговано успішно!");
         model.addAttribute("posts", postService.findAllByOrderByIdDesc());
         return "redirect:/";
     }
-    
 }
