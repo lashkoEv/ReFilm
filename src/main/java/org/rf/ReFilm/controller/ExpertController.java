@@ -36,7 +36,7 @@ public class ExpertController {
 
     private final PostService postService;
 
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public ExpertController(UserService userService, PostService postService, PasswordEncoder passwordEncoder) {
         this.userService = userService;

@@ -58,7 +58,7 @@
 
                 <div class="card m-2 h-auto" style="border: 0 white; box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2); backdrop-filter: blur(14px); ">
                     <div class="card-header" style="border: 0 white;">
-                        <a href="<spring:url value="/categories/${p.film.id}"/>">${p.film.name}</a>
+                        <a href="<spring:url value="/films/${p.film.id}"/>">${p.film.name}</a>
 
                     </div>
                     <div class="card-body" style="border: 0 white; backdrop-filter: blur(14px);">

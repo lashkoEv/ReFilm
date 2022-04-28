@@ -25,5 +25,7 @@ public interface PostService {
 
     List<Post> findAllByUserId(Long id);
 
+    List<Post> findAllByFilmId(Long id);
+
 //    List<Post> findAllByCategoryId(Long id);
 }

@@ -17,5 +17,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "or u.username like %?1% or u.email like %?1% or u.name like %?1%)")
     Page<Post> findSearchedPosts(String search, Pageable pageable);
 
-   // List<Post> findAllByCategoryId(Long id);
+    List<Post> findAllByFilmId(Long id);
+    // List<Post> findAllByCategoryId(Long id);
 }

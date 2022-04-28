@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-lg-8 col-md-10 mx-auto" style="margin-bottom: 30px">
-            <form action="<c:url value="/categories/"/>">
+            <form action="<c:url value="/films/"/>">
                 <div class="row justify-content-center">
                     <div class="form-group floating-label-form-group controls col-lg-8 col-md-12">
                         <label for="search">Пошук</label>
@@ -35,7 +35,7 @@
                         <i class="fas fa-search"></i>
                     </button>
                     <span>&nbsp;</span>
-                    <a class="btn btn-light" style="padding-top: 27px" href="<spring:url value="/categories"/>"><i
+                    <a class="btn btn-light" style="padding-top: 27px" href="<spring:url value="/films"/>"><i
                             class="fa fa-times" aria-hidden="true"></i></a>
                 </div>
             </form>
@@ -43,14 +43,14 @@
 
 
         <div class="col-lg-8 col-md-10 mx-auto" style="">
-            <c:forEach items="${categories}" var="f" varStatus="state">
+            <c:forEach items="${films}" var="f" varStatus="state">
                 <c:if test="${not state.first}">
                     <hr>
                 </c:if>
                 <div class="card m-2 h-auto">
                     <div class="card-body">
-                        <a href="<spring:url value="/categories/${f.id}"/>">
-                            <h2 style="text-align: center" class="post-title">${f.getCategory()}</h2>
+                        <a href="<spring:url value="/films/${f.id}"/>">
+                            <h2 style="text-align: center" class="post-title">${f.name}</h2>
                         </a>
                     </div>
                 </div>

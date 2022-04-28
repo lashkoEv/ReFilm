@@ -64,6 +64,11 @@ public class PostServiceImpl implements PostService {
         return postRepository.findAllByUserId(id);
     }
 
+    @Override
+    public List<Post> findAllByFilmId(Long id) {
+        return postRepository.findAllByFilmId(id);
+    }
+
 //    @Override
 //    public List<Post> findAllByCategoryId(Long id) {
 //        return postRepository.findAllByCategoryId(id);

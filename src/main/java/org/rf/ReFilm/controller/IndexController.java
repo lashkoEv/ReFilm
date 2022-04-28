@@ -27,16 +27,10 @@ import java.util.regex.Pattern;
 @Slf4j
 public class IndexController {
 
-    private final UserService userService;
-
     private final PostService postService;
 
-    private PasswordEncoder passwordEncoder;
-
-    public IndexController(UserService userService, PostService postService, PasswordEncoder passwordEncoder) {
-        this.userService = userService;
+    public IndexController(PostService postService) {
         this.postService = postService;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping(value = {"/", "/home", "/index"})

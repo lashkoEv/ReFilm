@@ -39,8 +39,8 @@
                         <form:errors path="title" cssClass="error"/>
 
                         <form:select path="category" class="custom-select" style="width:100%">
-                            <c:forEach items="${categories}" var="c" varStatus="state">
-                                <form:option value="${c.id}" label="${c.getCategory()}"/>
+                            <c:forEach items="${categories}" var="f" varStatus="state">
+                                <form:option value="${f.id}" label="${f.getCategory()}"/>
                             </c:forEach>
                         </form:select>
                         <form:errors path="category" cssClass="error"/>
