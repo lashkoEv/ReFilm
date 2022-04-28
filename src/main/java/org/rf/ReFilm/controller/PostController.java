@@ -75,6 +75,7 @@ public class PostController {
                          RedirectAttributes redirectAttributes) {
         log.info(" --- create post (post)");
         if (bindingResult.hasErrors()) {
+            model.addAttribute("films", filmService.findAll());
             log.info(" --- create post (post) bindingResult.hasErrors()");
             return "add-post";
         }
@@ -85,6 +86,7 @@ public class PostController {
         } catch (Exception e) {
             log.error(" --- Error ", e);
             model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("films", filmService.findAll());
             model.addAttribute("post", post);
             return "add-post";
         }
@@ -154,6 +156,7 @@ public class PostController {
             if (user.equals(author) || u.getAuthorities().toString().contains("ROLE_ADMIN")) {
                 if (bindingResult.hasErrors()) {
                     log.info(" --- edit post (post) bindingResult.hasErrors()");
+                    model.addAttribute("films", filmService.findAll());
                     return "add-post";
                 }
                 post.setUser(author);
@@ -164,6 +167,7 @@ public class PostController {
         } catch ( Exception e) {
             log.error(" --- Error ", e);
             model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("films", filmService.findAll());
             model.addAttribute("post", post);
             return "add-post";
         }
