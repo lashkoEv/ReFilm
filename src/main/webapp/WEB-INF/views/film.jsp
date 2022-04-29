@@ -41,16 +41,23 @@
         </div>
         <hr/>
     </div>
-
 </div>
+
+
 <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
     <hr>
     <div class="row justify-content-center">
 
-        <div class="align-content-lg-center">
-            <a class="btn btn-primary" href="<spring:url value="/films/edit/${film.id}"/>">Редагувати</a>
-            <a class="btn btn-primary" href="<spring:url value="/films/delete/${film.id}"/>">Видалити</a>
+        <div class="card m-2 h-auto">
+            <div class="card-body">
+                <div class="align-content-lg-center">
+                    <a class="btn btn-primary" href="<spring:url value="/films/edit/${film.id}"/>">Редагувати</a>
+                    <span>&ensp;</span>
+                    <a class="btn btn-primary" href="<spring:url value="/films/delete/${film.id}"/>">Видалити</a>
+                </div>
+            </div>
         </div>
+
     </div>
 </sec:authorize>
 <hr>

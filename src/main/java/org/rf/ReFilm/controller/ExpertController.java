@@ -104,7 +104,7 @@ public class ExpertController {
             model.addAttribute("user", user);
             return "add-user";
         }
-        redirectAttributes.addFlashAttribute("msg", "Новий обліковий запис експерта успішно створено!");
+        redirectAttributes.addFlashAttribute("msg", "Новий обліковий запис рецензента успішно створено!");
         redirectAttributes.addFlashAttribute("users", userService.findAll());
         return "redirect:/experts";
     }
@@ -119,7 +119,7 @@ public class ExpertController {
         } catch (Exception e) {
             log.error(" --- Error ", e.getLocalizedMessage());
         }
-        redirectAttributes.addFlashAttribute("msg", "Обліковий запис експерта успішно видалено!");
+        redirectAttributes.addFlashAttribute("msg", "Обліковий запис рецензента успішно видалено!");
         redirectAttributes.addFlashAttribute("users", userService.findAll());
         return "redirect:/experts";
     }
@@ -163,7 +163,7 @@ public class ExpertController {
                     return "add-user";
                 }
             }
-        redirectAttributes.addFlashAttribute("msg", "Обліковий запис експерта успішно змінено!");
+        redirectAttributes.addFlashAttribute("msg", "Обліковий запис рецензента успішно змінено!");
         redirectAttributes.addFlashAttribute("users", userService.findAll());
         return "redirect:/experts";
     }

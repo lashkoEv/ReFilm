@@ -6,21 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-//CREATE TABLE films
-//        (
-//        id            bigint(20)   NOT NULL AUTO_INCREMENT,
-//        name          varchar(100) NOT NULL,
-//        premiere      TIMESTAMP    NOT NULL,
-//        directors     varchar(255) NOT NULL,
-//        screenwriters varchar(255) NOT NULL,
-//        actors        varchar(255) NOT NULL,
-//        PRIMARY KEY (id)
-//        );
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -36,7 +29,8 @@ public class Film {
     @NotNull
     private String name;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate premiere;
 
     @NotBlank

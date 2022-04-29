@@ -18,7 +18,7 @@
 
         <div class="col-lg-12 col-md-12 mx-auto">
             <div class="row justify-content-md-center">
-                <h1 style="color: #0085A1">НАВЧАЛЬНІ МАТЕРІАЛИ</h1>
+                <h1 style="color: #0085A1">РЕЦЕНЗІЇ</h1>
             </div>
             <hr/>
             <c:forEach items="${posts}" var="p" varStatus="state">
@@ -27,7 +27,7 @@
                 </c:if>
                 <div class="card m-2 h-auto">
                     <div class="card-header">
-                        <a href="<spring:url value="/categories/${p.category.id}"/>">${p.category.category}</a>
+                        <a href="<spring:url value="/categories/${p.film.id}"/>">${p.film.name}</a>
                     </div>
                     <div class="card-body">
                         <a href="<spring:url value="/posts/${p.id}"/>" style="font-size: 20pt">
@@ -49,11 +49,18 @@
     <hr>
     <div class="row justify-content-center">
 
-        <div class="align-content-lg-center">
-            <a class="btn btn-primary" href="<spring:url value="/experts/edit/${user.id}"/>">Редагувати</a>
-            <a class="btn btn-primary" href="<spring:url value="/experts/delete/${user.id}"/>">Видалити</a>
+        <div class="card m-2 h-auto">
+            <div class="card-body">
+                <div class="align-content-lg-center">
+                    <a class="btn btn-primary" href="<spring:url value="/experts/edit/${user.id}"/>">Редагувати</a>
+                    <span>&ensp;</span>
+                    <a class="btn btn-primary" href="<spring:url value="/experts/delete/${user.id}"/>">Видалити</a>
+                </div>
+            </div>
         </div>
+
     </div>
+
 </sec:authorize>
 <hr>
 

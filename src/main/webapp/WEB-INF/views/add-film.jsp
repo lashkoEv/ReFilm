@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
 <c:set var="title" value="ReFilm"/>
-<c:set var="subtitle" value="Створіть новий обліковий запис рецензента..."/>
+<c:set var="subtitle" value="Додайте запис про фільм..."/>
 <c:set var="picture" value='${pageContext.request.contextPath}/img/bg9.jpg'/>
 
 
@@ -27,58 +27,60 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             <div class="card m-2 h-auto">
                 <div class="card-body">
-                    <form:form method="POST" modelAttribute="user">
+                    <form:form method="POST" modelAttribute="newFilm">
 
                     <form:errors path="*" cssClass="alert alert-danger" element="div"/>
 
 
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
-                            <form:label path="username">Логін</form:label>
-                            <form:input id="username" path="username" name="username" type="text" required="required"
-                                        class="form-control" placeholder="Логін"/>
-
-                            <form:errors path="username" cssClass="error"/>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <form:label path="password">Пароль</form:label>
-                            <form:input id="password" path="password" name="password" type="password"
-                                        required="required"
-                                        class="form-control" placeholder="Пароль"/>
-                            <form:errors path="password" cssClass="error"/>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <form:label path="name">ПІБ</form:label>
+                            <form:label path="name">Назва</form:label>
                             <form:input id="name" path="name" name="name" type="text" required="required"
-                                        class="form-control" placeholder="ПІБ"/>
+                                        class="form-control" placeholder="Назва"/>
+
                             <form:errors path="name" cssClass="error"/>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
-                            <form:label path="email">Email</form:label>
-                            <form:input id="email" path="email" name="email" type="text" required="required"
-                                        class="form-control"
-                                        placeholder="Email"/>
-                            <form:errors path="email" cssClass="error"/>
+                            <form:label path="premiere">Прем'єра</form:label>
+                            <form:input id="premiere" path="premiere" name="premiere" type="date" required="required"
+                                        class="datepicker" placeholder="Прем'єра"/>
+                            <form:errors path="premiere" cssClass="error"/>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
-                            <form:label path="birthDate">Дата народження</form:label>
-                            <form:input id="birthDate" path="birthDate" name="birthDate" type="date" required="required"
-                                        class="datepicker" placeholder="Дата народження"/>
-                            <form:errors path="birthDate" cssClass="error"/>
+                            <form:label path="directors">Режисери</form:label>
+                            <form:input id="directors" path="directors" name="directors" type="text" required="required"
+                                        class="form-control" placeholder="Режисери"/>
+
+                            <form:errors path="directors" cssClass="error"/>
                         </div>
                     </div>
+
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <form:label path="screenwriters">Сценаристи</form:label>
+                            <form:input id="screenwriters" path="screenwriters" name="screenwriters" type="text" required="required"
+                                        class="form-control" placeholder="Сценаристи"/>
+
+                            <form:errors path="screenwriters" cssClass="error"/>
+                        </div>
+                    </div>
+
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <form:label path="actors">Актори</form:label>
+                                <form:input id="actors" path="actors" name="actors" type="text" required="required"
+                                            class="form-control" placeholder="Актори"/>
+
+                                <form:errors path="actors" cssClass="error"/>
+                            </div>
+                        </div>
+
                 </div>
                 <br/>
                 <div class="card-footer text-center">

@@ -20,12 +20,19 @@
         </div>
     </div>
     <sec:authorize access="hasAnyRole('ROLE_EXPERT', 'ROLE_ADMIN')">
-        <div class="row justify-content-md-center">
-            <div class="align-content-lg-center">
-                <a class="btn btn-primary" href="<spring:url value="/posts/edit/${post.id}"/>">Редагувати</a>
 
-                <a class="btn btn-primary" href="<spring:url value="/posts/delete/${post.id}"/>">Видалити</a>
+        <div class="row justify-content-center">
+
+            <div class="card m-2 h-auto">
+                <div class="card-body">
+                    <div class="align-content-lg-center">
+                        <a class="btn btn-primary" href="<spring:url value="/posts/edit/${post.id}"/>">Редагувати</a>
+                        <span>&ensp;</span>
+                        <a class="btn btn-primary" href="<spring:url value="/posts/delete/${post.id}"/>">Видалити</a>
+                    </div>
+                </div>
             </div>
+
         </div>
     </sec:authorize>
 

@@ -18,4 +18,8 @@ public interface FilmService {
     Page<Film> findAll(Pageable pageable);
 
     Page<Film> findSearchedFilms(String search, Pageable pageable);
+
+    List<Film> findByGenreIds(String[] ids);
+
+    List<Film> findByCountryIds(String[] ids);
 }

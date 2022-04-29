@@ -68,8 +68,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="<spring:url value="/films"/>">Усі фільми</a>
-                        <a class="dropdown-item" href="<spring:url value="/films"/>">Фільми за жанрами</a>
-                        <a class="dropdown-item" href="<spring:url value="/films"/>">Фільми за країною</a>
+                        <a class="dropdown-item" href="<spring:url value="/films/genres"/>">Фільми за жанрами</a>
+                        <a class="dropdown-item" href="<spring:url value="/films/countries"/>">Фільми за країною</a>
                         <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
                             <a class="dropdown-item" href="<spring:url value="/films/create"/>">Додати новий фільм</a>
                         </sec:authorize>

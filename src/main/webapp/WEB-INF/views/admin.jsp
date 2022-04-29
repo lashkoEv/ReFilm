@@ -3,8 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
-<c:set var="title" value="Study helper"/>
-<c:set var="subtitle" value="Здобувай нові знання з нами!"/>
+<c:set var="title" value="ReFilm"/>
+<c:set var="subtitle" value="Найкращі рецензії українською!"/>
 <c:set var="picture" value="${pageContext.request.contextPath}/img/bg2.jpg"/>
 
 <%@include file="include/navigation.jsp" %>
