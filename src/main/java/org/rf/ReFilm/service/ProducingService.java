@@ -18,4 +18,10 @@ public interface ProducingService {
     List<Producing> findByCountry(Country country);
 
     List<Producing> findByFilm(Film film);
+
+    List<Country> findAllByFilmIdNames(Long id);
+
+    void deleteAllByFilmId(Long id);
+
+    void deleteAllByFilmIdAndGenreId(Long idFilm, long idCountry);
 }

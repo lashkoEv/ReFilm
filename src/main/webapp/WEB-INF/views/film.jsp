@@ -13,7 +13,29 @@
 
 <div class="container">
     <div class="row">
+        <div class="col-lg-12 col-md-12 mx-auto ">
+            <div class="card" style="width: 100%">
+                <div class="card-body justify-content-center">
+                    <p><strong>Назва:</strong> ${film.name}</p>
+                    <p><strong>Прем'єра:</strong> ${film.getPremiereDate()}</p>
+                    <p><strong>Режисери:</strong> ${film.directors}</p>
+                    <p><strong>Сценаристи:</strong> ${film.screenwriters}</p>
+                    <p><strong>Актори:</strong> ${film.actors}</p>
+                    <p><strong>Жанри:</strong>
+                        <c:forEach items="${genres}" var="g">
+                            ${g.genre};
+                        </c:forEach>
+                    </p>
+                    <p><strong>Країни:</strong>
+                        <c:forEach items="${countries}" var="c">
+                            ${c.country};
+                        </c:forEach>
+                    </p>
+                </div>
+            </div>
 
+            <hr/>
+        </div>
         <div class="col-lg-12 col-md-12 mx-auto">
             <div class="row justify-content-md-center">
                 <h1 style="color: #0085A1">РЕЦЕНЗІЇ</h1>

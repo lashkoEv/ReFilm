@@ -80,7 +80,17 @@
                                 <form:errors path="actors" cssClass="error"/>
                             </div>
                         </div>
-
+                        <h3 class="text-center" style="margin-top: 15px; color: rgb(145, 35, 112)">Жанри</h3>
+                        <hr/>
+                        <c:forEach items="${genres}" var="c">
+                            <div><input type="checkbox" id="${c.id}" value="${c.id}" name="genres"/> ${c.genre}</div>
+                        </c:forEach>
+                        <hr/>
+                        <h3 class="text-center" style="color: rgb(145, 35, 112)">Країни</h3>
+                        <hr/>
+                        <c:forEach items="${countries}" var="c">
+                            <div><input type="checkbox" id="${c.id}" value="${c.id}" name="countries"/> ${c.country}</div>
+                        </c:forEach>
                 </div>
                 <br/>
                 <div class="card-footer text-center">

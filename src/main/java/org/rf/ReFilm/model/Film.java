@@ -50,7 +50,7 @@ public class Film {
         setPremiere(LocalDate.now());
     }
 
-    public String getCreatedDate(){
+    public String getPremiereDate(){
         int year = premiere.getYear();
         int month = premiere.getMonthValue();
         int dayOfMonth = premiere.getDayOfMonth();

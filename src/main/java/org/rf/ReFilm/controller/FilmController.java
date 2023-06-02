@@ -1,8 +1,10 @@
 package org.rf.ReFilm.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.rf.ReFilm.model.Categorization;
 import org.rf.ReFilm.model.Film;
 import org.rf.ReFilm.model.Post;
+import org.rf.ReFilm.model.Producing;
 import org.rf.ReFilm.service.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -55,9 +57,24 @@ public class FilmController {
         List<Post> posts = postService.findAllByFilmId(film.getId());
         model.addAttribute("film", film);
         model.addAttribute("posts", posts);
-        model.addAttribute("genres", genreService.findAll());
-        model.addAttribute("genresFilms", categorizationService.findByFilm(film));
+        model.addAttribute("genres", categorizationService.findAllByFilmIdNames(film.getId()));
+        model.addAttribute("countries", producingService.findAllByFilmIdNames(film.getId()));
         return "film";
+    }
+
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public String films(Model model, Integer page, Integer size, @Param("search") String search) {
+        log.info(" --- film index");
+        Pageable pageable = PageRequest.of(page == null ? 0 : page, size == null ? 5 : size, Sort.by("id").descending());
+        Page<Film> filmPage;
+        if (search != null) {
+            filmPage = filmService.findSearchedFilms(search, pageable);
+        } else {
+            filmPage = filmService.findAll(pageable);
+        }
+        model.addAttribute("films", filmPage.getContent());
+        model.addAttribute("page", filmPage);
+        return "films";
     }
 
     @RequestMapping(path = "/genres", method = RequestMethod.GET)
@@ -88,41 +105,44 @@ public class FilmController {
         return "films";
     }
 
-
-    @RequestMapping(path = "", method = RequestMethod.GET)
-    public String films(Model model, Integer page, Integer size, @Param("search") String search) {
-        log.info(" --- film index");
-        Pageable pageable = PageRequest.of(page == null ? 0 : page, size == null ? 5 : size, Sort.by("id").descending());
-        Page<Film> filmPage;
-        if (search != null) {
-            filmPage = filmService.findSearchedFilms(search, pageable);
-        } else {
-            filmPage = filmService.findAll(pageable);
-        }
-        model.addAttribute("films", filmPage.getContent());
-        model.addAttribute("page", filmPage);
-        return "films";
-    }
-
     @RolesAllowed({"ROLE_ADMIN"})
     @RequestMapping(path = "/create", method = RequestMethod.GET)
     public String create(Model model) {
         log.info(" --- create film (get)");
         model.addAttribute("newFilm", new Film());
+        model.addAttribute("genres", genreService.findAll());
+        model.addAttribute("countries", countryService.findAll());
         return "add-film";
     }
 
     @RolesAllowed({"ROLE_ADMIN"})
     @RequestMapping(path = "/create", method = RequestMethod.POST)
-    public String create(@ModelAttribute("newFilm") @Validated Film newFilm, BindingResult bindingResult, Model model,
+    public String create(@Param("countries") String countries, @Param("genres") String genres,
+                         @ModelAttribute("newFilm") @Validated Film newFilm, BindingResult bindingResult, Model model,
                          RedirectAttributes redirectAttributes) {
         log.info(" --- add film");
+
         if (bindingResult.hasErrors()) {
             log.info(" --- create film (post) bindingResult.hasErrors()");
             return "add-film";
         }
         try {
-            filmService.save(newFilm);
+            Film film = filmService.save(newFilm);
+            String[] idCountries = countries.split(",");
+            String[] idGenres = genres.split(",");
+            for (String idGenre : idGenres) {
+                Categorization categorization = new Categorization();
+                categorization.setFilmId(film.getId());
+                categorization.setGenreId(Long.parseLong(idGenre));
+                categorizationService.save(categorization);
+            }
+            for (String idCountry : idCountries) {
+                Producing producing = new Producing();
+                producing.setFilmId(film.getId());
+                producing.setCountryId(Long.parseLong(idCountry));
+                producingService.save(producing);
+            }
+
         } catch (Exception e) {
             log.error(" --- Error ", e);
             model.addAttribute("errorMessage", e.getMessage());
@@ -141,6 +161,8 @@ public class FilmController {
         try {
             System.out.println(id);
             filmService.delete(id);
+            categorizationService.deleteAllByFilmId(id);
+            producingService.deleteAllByFilmId(id);
             log.info(" --- deleted film id {}", id);
 
         } catch (Exception e) {
@@ -158,6 +180,8 @@ public class FilmController {
         Film found = filmService.findById(id);
         if (found != null) {
             model.addAttribute("newFilm", found);
+            model.addAttribute("genres", categorizationService.findAllByFilmIdNames(found.getId()));
+            model.addAttribute("countries", producingService.findAllByFilmIdNames(found.getId()));
             return "add-film";
         }
         return "redirect:/";
@@ -165,16 +189,32 @@ public class FilmController {
 
     @RolesAllowed({"ROLE_ADMIN"})
     @RequestMapping(path = "/edit/{id}", method = RequestMethod.POST)
-    public String edit(@ModelAttribute("newFilm") @Validated Film film, BindingResult bindingResult, Model model,
+    public String edit(@Param("countries") String countries, @Param("genres") String genres,
+                       @ModelAttribute("newFilm") @Validated Film film, BindingResult bindingResult, Model model,
                        RedirectAttributes redirectAttributes) {
         log.info(" --- edit film (post)");
-
         if (bindingResult.hasErrors()) {
             log.info(" --- edit film (post) bindingResult.hasErrors()");
             return "add-film";
         } else {
             try {
                 filmService.save(film);
+                categorizationService.deleteAllByFilmId(film.getId());
+                producingService.deleteAllByFilmId(film.getId());
+                String[] idCountries = countries.split(",");
+                String[] idGenres = genres.split(",");
+                for (String idGenre : idGenres) {
+                    Categorization categorization = new Categorization();
+                    categorization.setFilmId(film.getId());
+                    categorization.setGenreId(Long.parseLong(idGenre));
+                    categorizationService.save(categorization);
+                }
+                for (String idCountry : idCountries) {
+                    Producing producing = new Producing();
+                    producing.setFilmId(film.getId());
+                    producing.setCountryId(Long.parseLong(idCountry));
+                    producingService.save(producing);
+                }
             } catch (Exception e) {
                 log.error(" --- Error ", e);
                 model.addAttribute("errorMessage", e.getMessage());

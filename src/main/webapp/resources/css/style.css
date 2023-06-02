@@ -14,6 +14,9 @@ body{
     background-color: white;
     font-family: "Roboto Condensed", sans-serif;
 }
+strong{
+    color: #0f6674;
+}
 
 #mainNav .navbar-brand {
     font-weight: 800;

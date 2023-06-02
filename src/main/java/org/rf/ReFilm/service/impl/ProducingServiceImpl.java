@@ -46,4 +46,19 @@ public class ProducingServiceImpl implements ProducingService {
     public List<Producing> findByFilm(Film film) {
         return producingRepository.findAllByFilmId(film.getId());
     }
+
+    @Override
+    public List<Country> findAllByFilmIdNames(Long id) {
+        return producingRepository.findAllByFilmIdNames(id);
+    }
+
+    @Override
+    public void deleteAllByFilmId(Long id) {
+        producingRepository.deleteAllByFilmId(id);
+    }
+
+    @Override
+    public void deleteAllByFilmIdAndGenreId(Long idFilm, long idCountry) {
+        producingRepository.deleteAllByFilmIdAndCountryId(idFilm, idCountry);
+    }
 }

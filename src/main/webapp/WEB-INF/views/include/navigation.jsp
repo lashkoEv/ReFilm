@@ -99,14 +99,18 @@
                            href="<spring:url value="/logout"/>">Выйти '${pageContext.request.userPrincipal.name}' </a>
                     </sec:authorize>
                 </li>
-
-                <li class="nav-item">
-                    <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <a class="nav-link"
-                           href="<spring:url value="/admin"/>">Admin</a>
-                    </sec:authorize>
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ADMIN
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<spring:url value="/admin"/>">Logging</a>
+                        <a class="dropdown-item" href="<spring:url value="/admin/backup"/>">Backup</a>
+                    </div>
                 </li>
-
+                </sec:authorize>
             </ul>
 
         </div>

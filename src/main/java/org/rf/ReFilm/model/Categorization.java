@@ -20,13 +20,9 @@ public class Categorization {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @NotNull
     @Column(name = "genre_id")
     private Long genreId;
 
-    @NotBlank
-    @NotNull
     @Column(name = "film_id")
     private Long filmId;
 

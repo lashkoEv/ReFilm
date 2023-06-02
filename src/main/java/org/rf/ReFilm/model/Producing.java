@@ -20,13 +20,9 @@ public class Producing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @NotNull
     @Column(name = "country_id")
     private Long countryId;
 
-    @NotBlank
-    @NotNull
     @Column(name = "film_id")
     private Long filmId;
 }

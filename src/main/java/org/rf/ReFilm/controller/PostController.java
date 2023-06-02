@@ -164,7 +164,7 @@ public class PostController {
                 postService.save(post);
 
             }
-        } catch ( Exception e) {
+        } catch (Exception e) {
             log.error(" --- Error ", e);
             model.addAttribute("errorMessage", e.getMessage());
             model.addAttribute("films", filmService.findAll());
